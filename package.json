@@ -1,0 +1,15 @@
+{
+  "name": "@covid19/scraper-interfaces",
+  "version": "0.0.1",
+  "description": "a data normalization and fetching library for sources with covid19 data",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-covid:covid19-fyi/scraper-interfaces.git"
+  },
+  "author": "Contact <contact@covid19.fyi>",
+  "license": "GPL-3.0"
+}
