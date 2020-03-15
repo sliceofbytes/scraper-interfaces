@@ -1,4 +1,4 @@
-export interface SourceData {
+export interface SourceDataPoint {
   cases?: number;
   deaths?: number;
   serious?: number;
@@ -7,4 +7,13 @@ export interface SourceData {
   pui?: number;
   tested?: number;
   updateEpoch?: number;
+}
+
+export interface SourceLocalityDataPoint extends SourceDataPoint {
+  localityName: string;
+}
+
+export interface SourceData {
+  total: SourceDataPoint;
+  localities: Array<SourceLocalityDataPoint>
 }

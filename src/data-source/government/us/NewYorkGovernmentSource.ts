@@ -1,20 +1,24 @@
 import axios from "axios";
 import https from "https"
+import cheerio from "cheerio";
 import UserAgent from "user-agents";
-// import cheerio from "cheerio";
 
 import { DataSource } from "../../DataSource";
 import { SourceType } from "../../../definitions/sources/SourceType";
-import { SourceData } from "../../../definitions/sources/SourceData";
+import { SourceData, SourceLocalityDataPoint } from "../../../definitions/sources/SourceData";
 import { SourceFeatures } from "../../../definitions/sources/SourceFeatures";
+import { NumericalUtilities } from "../../../utilities/NumericalUtilities";
 
 const { OVERRIDE_NEW_YORK_SOURCE_URL } = process.env;
 
 const NEW_YORK_SOURCE_URL = "https://health.ny.gov/diseases/communicable/coronavirus/";
 
+const EXPECTED_HEADER = ["County", "Positive Cases"];
+const FILTERED_LOCALITIES = ["New York State (Outside of NYC)"];
+
 const NEW_YORK_FEATURES: SourceFeatures = {
   cases: true,
-  deaths: true,
+  deaths: false,
   serious: false,
   critical: false,
   recovered: false,
@@ -33,7 +37,6 @@ export class NewYorkGovernmentSource extends DataSource {
   }
 
   async getPageContent(): Promise<string> {
-    console.log(this.url);
     const options = {
       headers: {
         "Host": "health.ny.gov",
@@ -42,11 +45,29 @@ export class NewYorkGovernmentSource extends DataSource {
       },
       httpsAgent: new https.Agent({ rejectUnauthorized: false })
     };
-    console.log(options);
-    return axios.get(this.url, options);
+    const response = await axios.get(this.url, options);
+    return response.data;
   }
 
   async parsePageContent(pageContentHtml: string): Promise<SourceData> {
-    return {};
+    const page = cheerio.load(pageContentHtml);
+
+    const tableRows = page("tbody").children().get().map(row => cheerio(row).children().get());
+    const targetTable = tableRows.map(row => row.map(column => cheerio(column).text()));
+
+    const headerRow = targetTable.shift();
+    if (headerRow?.join(",") !== EXPECTED_HEADER.join(",")) throw Error(`Unexpected header row [${headerRow?.join(",")}]`);
+
+    const parsedCounties: Array<SourceLocalityDataPoint> = targetTable.reduce((countyData: any, tableRow) => {
+      if (!FILTERED_LOCALITIES.includes(tableRow[0])) {
+        countyData.push({ localityName: tableRow[0], cases: NumericalUtilities.parseNumber(tableRow[1]) });
+      }
+      return countyData;
+    }, []);
+
+    const totalRowIdx = parsedCounties.findIndex(dataPoint => dataPoint.localityName === "Total Positive Cases (Statewide)");
+    const totalRow = parsedCounties.splice(totalRowIdx, 1)[0];
+
+    return { total: { cases: totalRow.cases }, localities: parsedCounties };
   }
 }
