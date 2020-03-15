@@ -1,1 +1,1 @@
-# scraper-interfaces
+# Scraper Interfaces
