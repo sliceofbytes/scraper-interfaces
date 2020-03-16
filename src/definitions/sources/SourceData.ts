@@ -16,5 +16,5 @@ export interface SourceLocalityDataPoint extends SourceDataPoint {
 
 export interface SourceData {
   total: SourceDataPoint;
-  localities: Array<SourceLocalityDataPoint>
+  localities: Array<SourceLocalityDataPoint>;
 }
