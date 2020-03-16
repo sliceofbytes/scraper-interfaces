@@ -4,6 +4,7 @@ export interface SourceDataPoint {
   serious?: number;
   critical?: number;
   recovered?: number;
+  unresolved?: number;
   pui?: number;
   tested?: number;
   updateEpoch?: number;

@@ -22,6 +22,7 @@ const NEW_YORK_FEATURES: SourceFeatures = {
   serious: false,
   critical: false,
   recovered: false,
+  unresolved: false,
   pui: false,
   tested: false,
   updateEpoch: true
@@ -33,7 +34,7 @@ const NEW_YORK_FEATURES: SourceFeatures = {
  */
 export class NewYorkGovernmentSource extends DataSource {
   public constructor() {
-    super(OVERRIDE_NEW_YORK_SOURCE_URL || NEW_YORK_SOURCE_URL, SourceType.GOVERNMENT, NEW_YORK_FEATURES);
+    super(SourceType.GOVERNMENT, NEW_YORK_FEATURES);
   }
 
   async getPageContent(): Promise<string> {
@@ -45,7 +46,7 @@ export class NewYorkGovernmentSource extends DataSource {
       },
       httpsAgent: new https.Agent({ rejectUnauthorized: false })
     };
-    const response = await axios.get(this.url, options);
+    const response = await axios.get(OVERRIDE_NEW_YORK_SOURCE_URL || NEW_YORK_SOURCE_URL, options);
     return response.data;
   }
 

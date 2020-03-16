@@ -7,12 +7,10 @@ import { SourceFeatures } from "../definitions/sources/SourceFeatures";
  * @author GUH <contact@covid19.fyi>
  */
 export abstract class DataSource {
-  protected readonly url: string;
   public readonly type: SourceType;
   public readonly features: SourceFeatures;
 
-  protected constructor(url: string, type: SourceType, features: SourceFeatures) {
-    this.url = url;
+  protected constructor(type: SourceType, features: SourceFeatures) {
     this.type = type;
     this.features = features;
   }
