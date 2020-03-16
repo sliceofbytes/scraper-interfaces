@@ -12,9 +12,17 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-      - name: Lint
-        run: |
-          npm run lint
       - name: Test
         run: |
           npm run ci
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - name: Install Dependencies
+        run: |
+          npm install
+      - name: Lint
+        run: |
+          npm run lint
