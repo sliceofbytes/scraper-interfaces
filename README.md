@@ -12,6 +12,9 @@ to easy automated testing and external validation. All pull requests require int
 We have a registry class that you can pull specific source types and regions from. The library is designed to scale up to hundreds
 of different sources, so make a PR today!
 
+## Sources
+If you're interested in viewing our sources you may do so [here](https://docs.google.com/spreadsheets/d/1Uw6RPRejs0lg-2F8VrWgY8ZX_8f4YHt38-KmJrXYcb0/edit?usp=sharing). If you have a suggestion for a source please [open an issue](https://github.com/COVID19-OSS/scraper-interfaces/issues/new)
+
 ## Installation
 
 ## Contributing
