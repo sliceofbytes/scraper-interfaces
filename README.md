@@ -13,7 +13,7 @@ We have a registry class that you can pull specific source types and regions fro
 of different sources, so make a PR today!
 
 ## Sources
-If you're interested in viewing our sources you may do so [here](https://docs.google.com/spreadsheets/d/1Uw6RPRejs0lg-2F8VrWgY8ZX_8f4YHt38-KmJrXYcb0/edit?usp=sharing). If you have a suggestion for a source please [open an issue](https://github.com/COVID19-OSS/scraper-interfaces/issues/new)
+If you're interested in viewing our sources you may do so [here](https://docs.google.com/spreadsheets/d/1Uw6RPRejs0lg-2F8VrWgY8ZX_8f4YHt38-KmJrXYcb0/edit?usp=sharing). If you have a suggestion for a source please [open an issue](https://github.com/COVID19-OSS/scraper-interfaces/issues/new). We ask that if you're going to suggest a source that you only submit 1st-party government sources at this time; we are not looking for other websites or aggregators. Thank you for your help!
 
 ## Installation
 
