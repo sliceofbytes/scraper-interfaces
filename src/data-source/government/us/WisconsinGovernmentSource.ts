@@ -30,7 +30,7 @@ const WISCONSIN_FEATURES: SourceFeatures = {
 };
 
 /**
- * NewYorkGovernmentDataSource Suite
+ * WisconsinGovernmentDataSource Suite
  * @author GUH <contact@covid19.fyi>
  */
 export class WisconsinGovernmentSource extends DataSource {
@@ -54,7 +54,6 @@ export class WisconsinGovernmentSource extends DataSource {
 
     const tableRows = page("#covid-county-table table tbody").children().get().map(row => cheerio(row).children().get());
     const targetTable = tableRows.map(row => row.map(column => cheerio(column).text()));
-    debugger;
     const headerRow = targetTable.shift();
     if (headerRow?.join(",")?.replace(/\s?\d{1,2}\/\d{1,2}\/\d{4}/gm,'') !== EXPECTED_HEADER.join(",")) throw Error(`Unexpected header row [${headerRow?.join(",")}]`);
 
