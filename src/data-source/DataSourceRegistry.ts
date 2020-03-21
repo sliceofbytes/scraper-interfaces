@@ -1,7 +1,9 @@
+
 import { DataSource } from "./DataSource";
 import { DataSourceName } from "..";
 
 import { NewYorkGovernmentSource } from "./government";
+import { WisconsinGovernmentSource } from "./government";
 import { ColombiaGovernmentSource } from "./government";
 import { HopkinsAggregatorSource } from "./aggregator/HopkinsAggregatorSource";
 
@@ -19,6 +21,7 @@ export class DataSourceRegistry {
     mapping.set(DataSourceName.NEW_YORK_GOV, NewYorkGovernmentSource.prototype);
     mapping.set(DataSourceName.COLOMBIA_GOV, ColombiaGovernmentSource.prototype);
     mapping.set(DataSourceName.JOHNS_HOPKINS, HopkinsAggregatorSource.prototype);
+    mapping.set(DataSourceName.WISCONSIN_GOV, WisconsinGovernmentSource.prototype)
     return mapping;
   }
 

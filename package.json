@@ -5,7 +5,7 @@
   "description": "a data normalization and fetching library for sources with covid19 data",
   "main": "dist/index.js",
   "scripts": {
-    "test": ". etc/test.env && jest",
+    "test": "jest",
     "ci": "jest --coverage",
     "lint": "eslint . --ext .ts,.tsx",
     "build": "tsc"
