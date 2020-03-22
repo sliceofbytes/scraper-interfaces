@@ -22,15 +22,6 @@ const NL_FEATURES: SourceFeatures = {
   updateEpoch: true
 };
 
-// interface NetherlandsDataPoint {
-//   township:string;
-//   per100k: number;
-//   cases: number;
-// }
-
-// interface ColombiaType {
-//   data: Array<string[]>;
-// }
 
 /**
  * NetherlandsDataSource Suite
