@@ -1,10 +1,9 @@
-import { SourceLocalityDataPoint } from './../../../../dist/definitions/sources/SourceData.d';
 import cheerio from "cheerio";
 import UserAgent from "user-agents";
 import * as cloudscraper from "cloudscraper";
 import { DataSource } from "../../DataSource";
 import { SourceType } from "../../../definitions/sources/SourceType";
-import { SourceData } from "../../../definitions/sources/SourceData";
+import { SourceData, SourceLocalityDataPoint } from "../../../definitions/sources/SourceData";
 import { SourceFeatures } from "../../../definitions/sources/SourceFeatures";
 import { NumericalUtilities } from "../../../utilities/NumericalUtilities";
 
